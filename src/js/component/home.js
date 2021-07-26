@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
 export const Home = () => {
-	let [tasks, setTasks] = useState([]);
+	let [tasks, setTasks] = useState([""]);
 	let [inputValue, setInputValue] = useState("");
-	//const [listLength, setListLength] = useState(0);
 
 	const addTask = e => {
 		if (e.keyCode === 13 && inputValue !== "") {
@@ -19,9 +18,9 @@ export const Home = () => {
 	};
 
 	return (
-		<>
+		<div className="container">
 			<input
-				className="my-3"
+				className="col align-self-center"
 				type="text"
 				onChange={e => setInputValue(e.target.value)}
 				value={inputValue}
@@ -29,11 +28,11 @@ export const Home = () => {
 				placeholder={inputValue === "" ? "Add a new task..." : ""}
 			/>
 
-			<ul className="p-0">
+			<ul className="p-2">
 				{tasks.map(task => (
 					<>
 						<li
-							className="card bg-success text-left"
+							className="card bg-success text-center"
 							onClick={() => deleteTask(task[0])}
 							key={task[0]}
 							style={{ listStyleType: "none" }}>
@@ -43,14 +42,14 @@ export const Home = () => {
 					</>
 				))}
 			</ul>
-			<hr style={{ borderTop: "3px dashed" }} />
-			<small className="mb-3">
+			<hr style={{ borderTop: "1px dashed" }} />
+			<small className="col-12">
 				{tasks.length > 0 ? (
 					<b>{tasks.length} tasks pendings!!</b>
 				) : (
-					<b>Nothing to do! Yuju!</b>
+					<b>Nothing to do!!</b>
 				)}
 			</small>
-		</>
+		</div>
 	);
 };
